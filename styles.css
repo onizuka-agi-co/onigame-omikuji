@@ -1,0 +1,358 @@
+:root {
+  --bg-top: #f7efe2;
+  --bg-bottom: #e4b87a;
+  --ink: #1d1a17;
+  --paper: rgba(255, 248, 238, 0.88);
+  --paper-strong: #fffaf3;
+  --line: rgba(66, 40, 18, 0.12);
+  --shadow: 0 22px 70px rgba(73, 33, 0, 0.17);
+  --tone-waiting: #7a6754;
+  --tone-great: #c43d26;
+  --tone-good: #b4651c;
+  --tone-soft: #5c7840;
+  --tone-caution: #3f6472;
+  --tone-hard: #463a68;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", Georgia, serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.75), transparent 32%),
+    linear-gradient(180deg, var(--bg-top), var(--bg-bottom));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0 1px, transparent 1px 100%),
+    linear-gradient(rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 100%);
+  background-size: 22px 22px;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.app-shell {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 56px 20px 72px;
+}
+
+.hero {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(29, 26, 23, 0.62);
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(3rem, 9vw, 5.6rem);
+  line-height: 0.96;
+  letter-spacing: 0.04em;
+}
+
+.lead {
+  margin: 16px 0 0;
+  max-width: 640px;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  line-height: 1.8;
+}
+
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+  gap: 22px;
+  align-items: start;
+}
+
+.altar-card,
+.history-card {
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--paper);
+  backdrop-filter: blur(10px);
+  box-shadow: var(--shadow);
+}
+
+.altar-card {
+  padding: 26px;
+}
+
+.altar-label {
+  margin: 0 0 12px;
+  font-size: 0.86rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(29, 26, 23, 0.55);
+}
+
+.fortune-card {
+  padding: 32px 24px;
+  min-height: 360px;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.84), rgba(248, 236, 218, 0.96)),
+    var(--paper-strong);
+  border: 1px solid rgba(92, 51, 17, 0.1);
+  position: relative;
+  overflow: hidden;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.fortune-card::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 120px;
+  height: 120px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.86), transparent 68%);
+  opacity: 0.7;
+}
+
+.fortune-card[data-tone="great"] {
+  border-color: rgba(196, 61, 38, 0.2);
+}
+
+.fortune-card[data-tone="good"] {
+  border-color: rgba(180, 101, 28, 0.2);
+}
+
+.fortune-card[data-tone="soft"] {
+  border-color: rgba(92, 120, 64, 0.2);
+}
+
+.fortune-card[data-tone="caution"] {
+  border-color: rgba(63, 100, 114, 0.2);
+}
+
+.fortune-card[data-tone="hard"] {
+  border-color: rgba(70, 58, 104, 0.22);
+}
+
+.fortune-badge {
+  margin: 0 0 16px;
+  font-size: 0.86rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--tone-waiting);
+}
+
+.fortune-card[data-tone="great"] .fortune-badge {
+  color: var(--tone-great);
+}
+
+.fortune-card[data-tone="good"] .fortune-badge {
+  color: var(--tone-good);
+}
+
+.fortune-card[data-tone="soft"] .fortune-badge {
+  color: var(--tone-soft);
+}
+
+.fortune-card[data-tone="caution"] .fortune-badge {
+  color: var(--tone-caution);
+}
+
+.fortune-card[data-tone="hard"] .fortune-badge {
+  color: var(--tone-hard);
+}
+
+.fortune-card h2 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  font-size: clamp(2rem, 5vw, 3.1rem);
+  line-height: 1.05;
+}
+
+.fortune-card > p,
+.fortune-meta {
+  position: relative;
+  z-index: 1;
+}
+
+.fortune-card > p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.9;
+  max-width: 34rem;
+}
+
+.fortune-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 28px 0 0;
+}
+
+.fortune-meta div {
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.62);
+  border: 1px solid rgba(92, 51, 17, 0.08);
+}
+
+.fortune-meta dt {
+  font-size: 0.82rem;
+  color: rgba(29, 26, 23, 0.52);
+}
+
+.fortune-meta dd {
+  margin: 8px 0 0;
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.draw-button {
+  padding: 15px 24px;
+  min-width: 210px;
+  color: #fffaf3;
+  background: linear-gradient(135deg, #c94722, #8e2616);
+  box-shadow: 0 16px 32px rgba(155, 47, 23, 0.22);
+}
+
+.draw-button:hover {
+  transform: translateY(-1px);
+}
+
+.subtle-button {
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(92, 51, 17, 0.1);
+  color: rgba(29, 26, 23, 0.76);
+}
+
+.history-card {
+  padding: 24px 20px;
+}
+
+.history-header h2,
+.history-header p {
+  margin: 0;
+}
+
+.history-header h2 {
+  font-size: 1.2rem;
+}
+
+.history-header p {
+  margin-top: 6px;
+  color: rgba(29, 26, 23, 0.55);
+  font-size: 0.92rem;
+}
+
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 10px;
+}
+
+.history-list li {
+  padding: 14px 14px 13px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.64);
+  border: 1px solid rgba(92, 51, 17, 0.08);
+}
+
+.history-tier {
+  display: inline-block;
+  margin-bottom: 6px;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(29, 26, 23, 0.52);
+}
+
+.history-text {
+  margin: 0;
+  line-height: 1.65;
+}
+
+.history-empty {
+  color: rgba(29, 26, 23, 0.55);
+}
+
+.fortune-card.revealed {
+  animation: reveal 400ms ease;
+}
+
+@keyframes reveal {
+  0% {
+    transform: translateY(12px) rotate(1.2deg);
+    opacity: 0.35;
+  }
+
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 880px) {
+  .stage {
+    grid-template-columns: 1fr;
+  }
+
+  .fortune-meta {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-shell {
+    padding: 28px 14px 48px;
+  }
+
+  .altar-card,
+  .history-card {
+    border-radius: 22px;
+  }
+
+  .fortune-card {
+    min-height: 0;
+    padding: 24px 18px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .draw-button,
+  .subtle-button {
+    width: 100%;
+  }
+}

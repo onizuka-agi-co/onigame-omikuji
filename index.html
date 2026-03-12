@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>おみくじ神社</title>
+    <meta
+      name="description"
+      content="ワンクリックで引ける、GitHub Pages向けの小さなおみくじアプリ。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero">
+        <p class="eyebrow">ONIGAME SAMPLE</p>
+        <h1>おみくじ神社</h1>
+        <p class="lead">
+          スキマ時間に1回だけ。今日の運勢を、さっと引いて、さっと前向きになるための小さなアプリ。
+        </p>
+      </section>
+
+      <section class="stage">
+        <div class="altar-card">
+          <p class="altar-label">Fortune Slip</p>
+          <div class="fortune-card" id="fortune-card" data-tone="waiting">
+            <p class="fortune-badge" id="fortune-badge">準備中</p>
+            <h2 id="fortune-title">まずはおみくじを引いてみよう</h2>
+            <p id="fortune-message">
+              鈴の音が鳴るみたいに、気軽に一回。結果はブラウザの中だけに保存されます。
+            </p>
+
+            <dl class="fortune-meta">
+              <div>
+                <dt>ラッキーカラー</dt>
+                <dd id="fortune-color">-</dd>
+              </div>
+              <div>
+                <dt>ラッキーアイテム</dt>
+                <dd id="fortune-item">-</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="actions">
+            <button class="draw-button" id="draw-button" type="button">おみくじを引く</button>
+            <button class="subtle-button" id="reset-button" type="button">履歴を消す</button>
+          </div>
+        </div>
+
+        <aside class="history-card">
+          <div class="history-header">
+            <h2>最近の結果</h2>
+            <p>直近5回だけ表示</p>
+          </div>
+          <ul class="history-list" id="history-list">
+            <li class="history-empty">まだ結果はありません。</li>
+          </ul>
+        </aside>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
