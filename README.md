@@ -1,6 +1,7 @@
 <div align="center">
   <h1>onigame-omikuji</h1>
   <p>One-click omikuji for short breaks, shipped as a fully static GitHub Pages app.</p>
+  <img src="./assets/omikuji-mark.svg" alt="onigame-omikuji icon" width="220">
   <p>
     <img src="https://img.shields.io/badge/Type-Static%20Web%20App-C85C38" alt="Static Web App">
     <img src="https://img.shields.io/badge/JavaScript-Vanilla-F7DF1E?logo=javascript&logoColor=222" alt="Vanilla JavaScript">
@@ -44,6 +45,8 @@ It is built for the ONIZUKA Game AGI Co. style of lightweight releases:
 
 ```text
 onigame-omikuji/
+|- assets/
+|  `- omikuji-mark.svg
 |- index.html
 |- styles.css
 |- app.js
@@ -82,6 +85,7 @@ This repository is intended to publish directly from the repository root.
 - make the first impression warm and playful
 - keep the interaction readable on both desktop and mobile
 - preserve the "one small action, one quick payoff" rhythm
+- use a reusable SVG mark so the repository has a simple visual identity
 
 ## 📝 Notes
 
